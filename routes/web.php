@@ -41,3 +41,9 @@ Route::post('subscribe-process', ['as'=>'subscribe-process','uses'=>'Subscriptio
 Route::get('/cancel', ['as'=>'cancel','uses'=>'SubscriptionController@cancel']);
 Route::get('/subscribe/send-email', ['as'=>'sub-send-email','uses'=>'SubscriptionController@send']);
 Route::get('/customer', 'CustomerController@getCustomer');
+
+Route::get('blade', function () {
+    return view('child');
+});
+
+Route::get('cache','CustomerController@cacheCustomer');

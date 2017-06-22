@@ -12,12 +12,15 @@ Use Mail;
 
 Use App\Models\User;
 
+use App\Jobs\SendReminderEmail;
+
 class EmailController extends Controller
 {
     public function SendEmail(){
         
-       $customer = User::find(2);
-        Mail::to($customer->email)
-            ->queue(new UserBanned($customer));
+       $customer = User::find(3);
+       dispatch(new SendReminderEmail($customer));
+        //Mail::to($customer->email)
+           // ->queue(new UserBanned($customer));
     }
 }
